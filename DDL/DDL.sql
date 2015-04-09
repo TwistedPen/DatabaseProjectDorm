@@ -52,9 +52,9 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `dorm`.`kitchen` ;
 
 CREATE TABLE IF NOT EXISTS `dorm`.`kitchen` (
-  `kitchenID` INT NOT NULL,
+  `ID` INT NOT NULL,
   `dorm_name` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`kitchenID`),
+  PRIMARY KEY (`ID`),
   INDEX `fk_kitchen_dorm1_idx` (`dorm_name` ASC),
   CONSTRAINT `fk_kitchen_dorm1`
     FOREIGN KEY (`dorm_name`)
@@ -90,16 +90,16 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `dorm`.`room` ;
 
 CREATE TABLE IF NOT EXISTS `dorm`.`room` (
-  `room_id` INT(3) NOT NULL,
+  `id` INT NOT NULL,
+  `room_name` VARCHAR(45) NOT NULL,
   `size` DECIMAL(4,2) NOT NULL,
   `monthly_fee` INT(6) NOT NULL,
-  `room_no` VARCHAR(10) NOT NULL,
-  `kitchen_kitchenID` INT NOT NULL,
-  PRIMARY KEY (`room_id`),
-  INDEX `fk_room_kitchen1_idx` (`kitchen_kitchenID` ASC),
+  `kitchen_ID` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_room_kitchen1_idx` (`kitchen_ID` ASC),
   CONSTRAINT `fk_room_kitchen1`
-    FOREIGN KEY (`kitchen_kitchenID`)
-    REFERENCES `dorm`.`kitchen` (`kitchenID`)
+    FOREIGN KEY (`kitchen_ID`)
+    REFERENCES `dorm`.`kitchen` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -111,14 +111,14 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `dorm`.`renting` ;
 
 CREATE TABLE IF NOT EXISTS `dorm`.`renting` (
-  `Room_room_id` INT(3) NOT NULL,
+  `room_id` INT(3) NOT NULL,
   `start_date` DATE NOT NULL,
   `end_date` DATE NULL,
-  INDEX `fk_Renting_Room1_idx` (`Room_room_id` ASC),
-  PRIMARY KEY (`Room_room_id`),
+  INDEX `fk_Renting_Room1_idx` (`room_id` ASC),
+  PRIMARY KEY (`room_id`),
   CONSTRAINT `fk_Renting_Room1`
-    FOREIGN KEY (`Room_room_id`)
-    REFERENCES `dorm`.`room` (`room_id`)
+    FOREIGN KEY (`room_id`)
+    REFERENCES `dorm`.`room` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `dorm`.`student` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_student_renting1`
     FOREIGN KEY (`renting_Room_room_id`)
-    REFERENCES `dorm`.`renting` (`Room_room_id`)
+    REFERENCES `dorm`.`renting` (`room_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
