@@ -37,6 +37,7 @@ insert into room values(080001,000008,'801',12);
 insert into room values(080006,000008,'806',12);
 insert into room values(080009,000008,'809',12);
 insert into room values(080009,000008,'802',12);
+insert into student values(2012902131,'Thomas','Malowanczyk',30316331,'Danmark Tekniske Universitet');
 insert into renting values();
 insert into signed_up values();
 insert into educational_institution values();
