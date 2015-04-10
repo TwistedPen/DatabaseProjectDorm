@@ -74,7 +74,6 @@ CREATE TABLE IF NOT EXISTS `dorm`.`Room` (
   `Kitchen_Kitchen_ID` INT NOT NULL,
   `Name` VARCHAR(45) NOT NULL,
   `Size` DECIMAL(4,2) NOT NULL,
-  `Monthly_fee` DECIMAL(8,2) NOT NULL,
   PRIMARY KEY (`ID`),
   INDEX `fk_room_Kitchen1_idx` (`Kitchen_Kitchen_ID` ASC),
   CONSTRAINT `fk_room_Kitchen1`
@@ -181,6 +180,24 @@ CREATE TABLE IF NOT EXISTS `dorm`.`Signed_up` (
   CONSTRAINT `fk_Signed_up_City1`
     FOREIGN KEY (`City_Post_no`)
     REFERENCES `dorm`.`City` (`Post_no`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `dorm`.`Room_Rent`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `dorm`.`Room_Rent` ;
+
+CREATE TABLE IF NOT EXISTS `dorm`.`Room_Rent` (
+  `Room_size` DECIMAL(4,2) NOT NULL,
+  `Dorm_Name` VARCHAR(45) NOT NULL,
+  `Monthly_fee` DECIMAL(8,2) NOT NULL,
+  PRIMARY KEY (`Room_size`, `Dorm_Name`),
+  CONSTRAINT `fk_Room_Rent_Dorm1`
+    FOREIGN KEY (`Dorm_Name`)
+    REFERENCES `dorm`.`Dorm` (`Name`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
