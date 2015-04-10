@@ -15,172 +15,172 @@ CREATE SCHEMA IF NOT EXISTS `dorm` DEFAULT CHARACTER SET utf8 COLLATE utf8_gener
 USE `dorm` ;
 
 -- -----------------------------------------------------
--- Table `dorm`.`city`
+-- Table `dorm`.`City`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `dorm`.`city` ;
+DROP TABLE IF EXISTS `dorm`.`City` ;
 
-CREATE TABLE IF NOT EXISTS `dorm`.`city` (
-  `post_code` INT(8) NOT NULL,
-  `city` VARCHAR(15) NOT NULL,
-  PRIMARY KEY (`post_code`))
+CREATE TABLE IF NOT EXISTS `dorm`.`City` (
+  `Post_no` INT(8) NOT NULL,
+  `City` VARCHAR(15) NOT NULL,
+  PRIMARY KEY (`Post_no`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `dorm`.`dorm`
+-- Table `dorm`.`Dorm`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `dorm`.`dorm` ;
+DROP TABLE IF EXISTS `dorm`.`Dorm` ;
 
-CREATE TABLE IF NOT EXISTS `dorm`.`dorm` (
-  `name` VARCHAR(45) NOT NULL,
-  `street_name` VARCHAR(60) NOT NULL,
-  `street_no` VARCHAR(45) NOT NULL,
-  `city_post_code` INT(8) NOT NULL,
-  PRIMARY KEY (`name`),
-  INDEX `fk_dorm_city1_idx` (`city_post_code` ASC),
-  CONSTRAINT `fk_dorm_city1`
-    FOREIGN KEY (`city_post_code`)
-    REFERENCES `dorm`.`city` (`post_code`)
+CREATE TABLE IF NOT EXISTS `dorm`.`Dorm` (
+  `Name` VARCHAR(45) NOT NULL,
+  `Street_name` VARCHAR(60) NOT NULL,
+  `Street_no` VARCHAR(45) NOT NULL,
+  `City_Post_no` INT(8) NOT NULL,
+  PRIMARY KEY (`Name`),
+  INDEX `fk_Dorm_City1_idx` (`City_Post_no` ASC),
+  CONSTRAINT `fk_Dorm_City1`
+    FOREIGN KEY (`City_Post_no`)
+    REFERENCES `dorm`.`City` (`Post_no`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `dorm`.`kitchen`
+-- Table `dorm`.`Kitchen`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `dorm`.`kitchen` ;
+DROP TABLE IF EXISTS `dorm`.`Kitchen` ;
 
-CREATE TABLE IF NOT EXISTS `dorm`.`kitchen` (
+CREATE TABLE IF NOT EXISTS `dorm`.`Kitchen` (
+  `Kitchen_ID` INT NOT NULL,
+  `Dorm_Name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`Kitchen_ID`),
+  INDEX `fk_Kitchen_Dorm1_idx` (`Dorm_Name` ASC),
+  CONSTRAINT `fk_Kitchen_Dorm1`
+    FOREIGN KEY (`Dorm_Name`)
+    REFERENCES `dorm`.`Dorm` (`Name`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `dorm`.`Room`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `dorm`.`Room` ;
+
+CREATE TABLE IF NOT EXISTS `dorm`.`Room` (
   `ID` INT NOT NULL,
-  `dorm_name` VARCHAR(45) NOT NULL,
+  `Kitchen_Kitchen_ID` INT NOT NULL,
+  `Name` VARCHAR(45) NOT NULL,
+  `Size` DECIMAL(4,2) NOT NULL,
+  `Monthly_fee` DECIMAL(8,2) NOT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `fk_kitchen_dorm1_idx` (`dorm_name` ASC),
-  CONSTRAINT `fk_kitchen_dorm1`
-    FOREIGN KEY (`dorm_name`)
-    REFERENCES `dorm`.`dorm` (`name`)
+  INDEX `fk_room_Kitchen1_idx` (`Kitchen_Kitchen_ID` ASC),
+  CONSTRAINT `fk_room_Kitchen1`
+    FOREIGN KEY (`Kitchen_Kitchen_ID`)
+    REFERENCES `dorm`.`Kitchen` (`Kitchen_ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `dorm`.`educational_instituion`
+-- Table `dorm`.`Renting`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `dorm`.`educational_instituion` ;
+DROP TABLE IF EXISTS `dorm`.`Renting` ;
 
-CREATE TABLE IF NOT EXISTS `dorm`.`educational_instituion` (
-  `name` VARCHAR(45) NOT NULL,
-  `street_name` VARCHAR(60) NOT NULL,
-  `street_no` VARCHAR(45) NOT NULL,
-  `city_post_code` INT(8) NOT NULL,
-  PRIMARY KEY (`name`),
-  INDEX `fk_educational_instituion_city1_idx` (`city_post_code` ASC),
-  CONSTRAINT `fk_educational_instituion_city1`
-    FOREIGN KEY (`city_post_code`)
-    REFERENCES `dorm`.`city` (`post_code`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `dorm`.`room`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `dorm`.`room` ;
-
-CREATE TABLE IF NOT EXISTS `dorm`.`room` (
-  `id` INT NOT NULL,
-  `room_name` VARCHAR(45) NOT NULL,
-  `size` DECIMAL(4,2) NOT NULL,
-  `monthly_fee` INT(6) NOT NULL,
-  `kitchen_ID` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_room_kitchen1_idx` (`kitchen_ID` ASC),
-  CONSTRAINT `fk_room_kitchen1`
-    FOREIGN KEY (`kitchen_ID`)
-    REFERENCES `dorm`.`kitchen` (`ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `dorm`.`renting`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `dorm`.`renting` ;
-
-CREATE TABLE IF NOT EXISTS `dorm`.`renting` (
-  `room_id` INT(3) NOT NULL,
-  `start_date` DATE NOT NULL,
-  `end_date` DATE NULL,
-  INDEX `fk_Renting_Room1_idx` (`room_id` ASC),
-  PRIMARY KEY (`room_id`),
+CREATE TABLE IF NOT EXISTS `dorm`.`Renting` (
+  `Room_ID` INT NOT NULL,
+  `Start_date` DATE NOT NULL,
+  `End_date` DATE NULL,
+  PRIMARY KEY (`Room_ID`),
   CONSTRAINT `fk_Renting_Room1`
-    FOREIGN KEY (`room_id`)
-    REFERENCES `dorm`.`room` (`id`)
+    FOREIGN KEY (`Room_ID`)
+    REFERENCES `dorm`.`Room` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `dorm`.`student`
+-- Table `dorm`.`Educational_instituion`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `dorm`.`student` ;
+DROP TABLE IF EXISTS `dorm`.`Educational_instituion` ;
 
-CREATE TABLE IF NOT EXISTS `dorm`.`student` (
-  `name` VARCHAR(45) NOT NULL,
+CREATE TABLE IF NOT EXISTS `dorm`.`Educational_instituion` (
+  `Name` VARCHAR(45) NOT NULL,
+  `Street_name` VARCHAR(60) NOT NULL,
+  `Street_no` VARCHAR(45) NOT NULL,
+  `City_Post_no` INT(8) NOT NULL,
+  PRIMARY KEY (`Name`),
+  INDEX `fk_Educational_instituion_City1_idx` (`City_Post_no` ASC),
+  CONSTRAINT `fk_Educational_instituion_City1`
+    FOREIGN KEY (`City_Post_no`)
+    REFERENCES `dorm`.`City` (`Post_no`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `dorm`.`Student`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `dorm`.`Student` ;
+
+CREATE TABLE IF NOT EXISTS `dorm`.`Student` (
   `CPR_no` INT(10) NOT NULL,
-  `phone_no` INT(8) NULL,
-  `educational_instituion_name` VARCHAR(45) NOT NULL,
-  `renting_Room_room_id` INT(3) NOT NULL,
-  PRIMARY KEY (`name`),
-  INDEX `fk_student_educational_instituion1_idx` (`educational_instituion_name` ASC),
-  INDEX `fk_student_renting1_idx` (`renting_Room_room_id` ASC),
-  CONSTRAINT `fk_student_educational_instituion1`
-    FOREIGN KEY (`educational_instituion_name`)
-    REFERENCES `dorm`.`educational_instituion` (`name`)
+  `First_name` VARCHAR(45) NOT NULL,
+  `Last_name` VARCHAR(45) NOT NULL,
+  `Phone_no` INT(10) NOT NULL,
+  `Renting_Room_ID` INT NOT NULL,
+  `Educational_instituion_Name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`CPR_no`),
+  INDEX `fk_Student_Renting1_idx` (`Renting_Room_ID` ASC),
+  INDEX `fk_Student_Educational_instituion1_idx` (`Educational_instituion_Name` ASC),
+  CONSTRAINT `fk_Student_Renting1`
+    FOREIGN KEY (`Renting_Room_ID`)
+    REFERENCES `dorm`.`Renting` (`Room_ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_student_renting1`
-    FOREIGN KEY (`renting_Room_room_id`)
-    REFERENCES `dorm`.`renting` (`room_id`)
+  CONSTRAINT `fk_Student_Educational_instituion1`
+    FOREIGN KEY (`Educational_instituion_Name`)
+    REFERENCES `dorm`.`Educational_instituion` (`Name`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `dorm`.`signed_up`
+-- Table `dorm`.`Signed_up`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `dorm`.`signed_up` ;
+DROP TABLE IF EXISTS `dorm`.`Signed_up` ;
 
-CREATE TABLE IF NOT EXISTS `dorm`.`signed_up` (
-  `dorm_name` VARCHAR(45) NOT NULL,
-  `student_name` VARCHAR(45) NOT NULL,
-  `sign_up_date` DATE NOT NULL,
-  `distance_to_edu` DECIMAL(6,2) NOT NULL,
-  `street_name` VARCHAR(60) NOT NULL,
-  `street_no` VARCHAR(45) NOT NULL,
-  `city_post_code` INT(8) NOT NULL,
-  PRIMARY KEY (`dorm_name`, `student_name`),
-  INDEX `fk_signed_up_city1_idx` (`city_post_code` ASC),
-  INDEX `fk_signed_up_dorm1_idx` (`dorm_name` ASC),
-  INDEX `fk_signed_up_student1_idx` (`student_name` ASC),
-  CONSTRAINT `fk_signed_up_city1`
-    FOREIGN KEY (`city_post_code`)
-    REFERENCES `dorm`.`city` (`post_code`)
+CREATE TABLE IF NOT EXISTS `dorm`.`Signed_up` (
+  `Student_CPR_no` INT(10) NOT NULL,
+  `Dorm_Name` VARCHAR(45) NOT NULL,
+  `Sign_up_date` DATE NOT NULL,
+  `Distance_to_edu` DECIMAL(6,2) NOT NULL,
+  `Street_name` VARCHAR(60) NOT NULL,
+  `Street_no` VARCHAR(45) NOT NULL,
+  `City_Post_no` INT(8) NOT NULL,
+  PRIMARY KEY (`Student_CPR_no`, `Dorm_Name`),
+  INDEX `fk_Signed_up_Dorm1_idx` (`Dorm_Name` ASC),
+  INDEX `fk_Signed_up_Student1_idx` (`Student_CPR_no` ASC),
+  INDEX `fk_Signed_up_City1_idx` (`City_Post_no` ASC),
+  CONSTRAINT `fk_Signed_up_Dorm1`
+    FOREIGN KEY (`Dorm_Name`)
+    REFERENCES `dorm`.`Dorm` (`Name`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_signed_up_dorm1`
-    FOREIGN KEY (`dorm_name`)
-    REFERENCES `dorm`.`dorm` (`name`)
+  CONSTRAINT `fk_Signed_up_Student1`
+    FOREIGN KEY (`Student_CPR_no`)
+    REFERENCES `dorm`.`Student` (`CPR_no`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_signed_up_student1`
-    FOREIGN KEY (`student_name`)
-    REFERENCES `dorm`.`student` (`name`)
+  CONSTRAINT `fk_Signed_up_City1`
+    FOREIGN KEY (`City_Post_no`)
+    REFERENCES `dorm`.`City` (`Post_no`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
