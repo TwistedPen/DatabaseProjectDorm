@@ -2,7 +2,6 @@
 ** SQL DML
 **/
 
-<<<<<<< HEAD
 # clear tables
 delete from city;
 delete from dorm;
@@ -29,8 +28,8 @@ insert into kitchen values(020001,'Paul Bergsø Kollegiet');
 insert into kitchen values(020002,'Paul Bergsø Kollegiet');
 insert into kitchen values(020003,'Paul Bergsø Kollegiet');
 insert into room_rent values(12,'Kampsax Kollegiet',2500);
-insert into room_rent values(12,'Paul Bersøg Kollegiet',2500);
-insert into room_rent values(24,'Paul Bersøg Kollegiet',4000);
+insert into room_rent values(12,'Paul Bergsø Kollegiet',2500);
+insert into room_rent values(24,'Paul Bergsø Kollegiet',4000);
 insert into room_rent values(18,'Ostenfeld Kollegiet',2500);
 insert into room_rent values(30,'Ostenfeld Kollegiet',4000);
 insert into room values(080001,000008,'801',12);
@@ -45,5 +44,3 @@ insert into signed_up values();
 insert into educational_institution values();
 insert into city values(2800,'Lyngby');
 insert into city values(2850,'Nærum');
-
->>>>>>> origin/master
