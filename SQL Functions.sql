@@ -6,7 +6,7 @@ CREATE FUNCTION `noOfRenters`(dormName varchar(45)) RETURNS int(11)
 BEGIN
 declare r_count integer;
 select count(*) into r_count from dorm
-where D_name = dormName;
+where dorm_name = dormName;
 RETURN r_count;
 END;//
 
