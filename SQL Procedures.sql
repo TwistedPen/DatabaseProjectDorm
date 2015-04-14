@@ -57,8 +57,8 @@ end;//
 /**
 ** Delete a studen from renting
 **/
-drop procedure if exists moving_out//
-create procedure moving_out(in CPR INT(10), room_id INT)
+drop procedure if exists vacate//
+create procedure vacate(in CPR INT(10), room_id INT)
 begin
     # Delete from signed_up
     delete from renting
