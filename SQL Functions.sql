@@ -37,6 +37,7 @@ BEGIN
 	RETURN rent;
 END;//
 
+CREATE FUNCTION `isAvailableRoom`(roomID int(11)) RETURNS BOOLEAN
 BEGIN
 	declare flag BOOLEAN;
 	set flag = roomID in (select room_ID from available_rooms);
