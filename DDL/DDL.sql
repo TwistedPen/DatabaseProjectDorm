@@ -32,6 +32,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `dorm`.`Dorm` ;
 
 CREATE TABLE IF NOT EXISTS `dorm`.`Dorm` (
+
   `Name` VARCHAR(45) NOT NULL,
   `Street_name` VARCHAR(60) NOT NULL,
   `Street_no` VARCHAR(45) NOT NULL,
