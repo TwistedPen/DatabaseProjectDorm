@@ -19,7 +19,7 @@ insert into city values(2850,'Nærum');
 insert into city values(4000,'Roskilde');
 insert into city values(1165,'København');
 insert into dorm values('Kampsax Kollegiet','Kollegiebakken', '9', 2800);
-insert into dorm values('Paul Bergsø Kollegiet','Skodsborgvej', '190', 2850);
+insert into dorm values('Paul Bergsøe Kollegiet','Skodsborgvej', '190', 2850);
 insert into dorm values('Ostenfeld Kollegiet','Rævehøjvej', '36', 2800);
 # Kitchen ID, dorm name
 insert into kitchen values(000008,'Kampsax Kollegiet');
@@ -78,17 +78,29 @@ insert into student values(236590000,'Stephen','Hawking',90111000,'Danmarks Tekn
 insert into student values(241070333,'Allan','Turing',30332151,'Danmarks Tekniske Universitet');
 insert into student values(251080333,'Steve','Jobs',45532211,'Danmarks Tekniske Universitet');
 insert into student values(241070334,'Hanne','Nielson',61236570,'Danmarks Tekniske Universitet');
-#Room ID, Start date, End date, Student CPR
+insert into student values(121212001,'Mads','Lind',34532234,'Danmarks Tekniske Universitet');
+insert into student values(120612004,'Mette','Brock',20302234,'Danmarks Tekniske Universitet');
+insert into student values(020122221,'Jakob','Henning',20592231,'Danmarks Tekniske Universitet');
+insert into student values(030310343,'Stine','Grue',45302210,'Danmarks Tekniske Universitet');
+insert into student values(090412344,'Sarah','Andersen',28559031,'Danmarks Tekniske Universitet');
+# Room ID, Start date, End date, Student CPR
+# Kampsax
 insert into renting values(080001,180208,160511,201290213);
 insert into renting values(080009,100110,160511,270292361);
+insert into renting values(080011,281208,200512,241070334);
+insert into renting values(080013,211208,200511,020122221);
+insert into renting values(080006,211208,200511,030310343);
+# Ostenfeld
 insert into renting values(010111,120404,160303,200888233);
 insert into renting values(010333,180208,160511,199205098);
+insert into renting values(010444,020212,160508,120612004);
+insert into renting values(010211,010002,131211,090412344);
+# Bergsøe
 insert into renting values(020050,130208,160516,140233488);
-insert into renting values(020444,281208,200512,153005091);
+insert into renting values(020001,281208,200512,153005091);
 insert into renting values(030044,281208,200512,251080333);
-insert into renting values(080011,281208,200512,241070334);
 # Student CPR, dorm, start date, street name, no, post code
-insert into signed_up values(201290213,'Kampsax Kollegiet',020312,1.00,'Kollegiebakken','9',2800);
+insert into signed_up values(121212004,'Kampsax Kollegiet',020312,1.00,'Kollegiebakken','9',2800);
 insert into signed_up values(040231466,'Kampsax Kollegiet',030313,10.00,'Kollegiebakken','9',2800);
 insert into signed_up values(236590000,'Kampsax Kollegiet',030313,50.00,'Kollegiebakken','9',2800);
 insert into signed_up values(270292361,'Ostenfeld Kollegiet',040415,5.00,'Rævehøjve','36',2800);
