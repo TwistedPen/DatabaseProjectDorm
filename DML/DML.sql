@@ -29,7 +29,6 @@ delete from student;
 
 
 # insert into tables
-
 insert into dorm values('Kampsax Kollegiet','Kollegiebakken', '9', 2800);
 insert into dorm values('Paul Bergsø Kollegiet','Skodsborgvej', '190', 2850);
 insert into dorm values('Ostenfeld Kollegiet','Rævehøjvej', '36', 2800);
@@ -52,6 +51,8 @@ insert into room values(080006,000008,'806',12);
 insert into room values(080009,000008,'809',12);
 insert into room values(080009,000008,'802',12);
 insert into student values(2012902131,'Thomas','Malowanczyk',30316331,'Danmark Tekniske Universitet');
+insert into student values(2008882336,'Anne','Sloth',23506054,'Danmark Tekniske Universitet');
+insert into student values(2707923614,'Henriette','Steenhoff',26661248,'Danmark Tekniske Universitet');
 insert into renting values();
 insert into signed_up values();
 insert into educational_institution values();
