@@ -5,9 +5,12 @@
 
 delimiter //
 
-create procedure update_rent(in room_size int(11), in new_rent decimal(8,2), dorm_name varchar(45))
+drop procedure if exists update_rent//
+create procedure update_rent(in r_size int(11), in new_rent decimal(8,2), d_name varchar(45))
 begin
-	insert into room_rent(Room_size, Monthly_fee, Dorm_name) values (room_size, new_rent, dorm_name);
+	update room_rent set monthly_fee = new_rent
+    where room_rent.Room_size = r_size and room_rent.dorm_name = d_name;
+	#insert into room_rent(room_size, monthly_fee, dorm_name) values (room_size, new_rent, dorm_name);
 end; //
 
 /**
