@@ -13,7 +13,6 @@ delete from kitchen;
 delete from room;
 delete from room_rent;
 
-
 # insert into tables
 insert into city values(2800,'Lyngby');
 insert into city values(2850,'Nærum');
@@ -66,4 +65,4 @@ insert into renting values(010111,120404,160303,200888233);
 # Student CPR, dorm, start date, street name, no, post code
 insert into signed_up values(201290213,'Kampsax Kollegiet',020312,1.00,'xx','34',2800);
 insert into signed_up values(270292361,'Ostenfeld Kollegiet',040415,5.00,'xx','25',2800);
-insert into signed_up values();
+insert into signed_up values(270235531,'Paul Bergsøe Kollegiet',150412,6.00,'xx','2',2850);
