@@ -43,6 +43,7 @@ end; //
 drop procedure if exists move_internally//
 create procedure move_internally(in old_room_id int(11), in new_room_id int(11))
 begin
+IF isAvailableRoom(new_room_id) THEN
 update renting set Room_ID = new_room_id;
 call moving_out((select CPR_no from renting where Room_ID = old_room_id), old_room_id);
 end IF;
