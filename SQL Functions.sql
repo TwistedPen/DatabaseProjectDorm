@@ -18,4 +18,14 @@ where Edu_name = uni group by Dorm_Name;
 RETURN uni_count;
 END;//
 
+ CREATE FUNCTION `getAddress`(roomID int(11)) RETURNS varchar(45)
+BEGIN
+declare address varchar;
+select distinct Street_name, Street_no 
+into address from (room natural join kitchen) natural join dorm 
+where ID = roomID;
+RETURN address;
+#missing concatenation of roomID to address
+END;//
+
 delimiter ;	
