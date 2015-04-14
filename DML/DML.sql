@@ -44,8 +44,8 @@ insert into room values(080006,000008,'806',12);
 insert into room values(080009,000008,'809',12);
 insert into room values(080002,000008,'802',12);
 # Ostenfeld
-insert into room values(010111,010002,'111',12);
-insert into room values(010211,010002,'220',12);
+insert into room values(010111,010002,'111',18);
+insert into room values(010211,010002,'220',30);
 # Bergsøe
 insert into room values(030033,020003,'300',24);
 insert into room values(020001,020002,'200',12);
