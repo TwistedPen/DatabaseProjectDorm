@@ -49,10 +49,10 @@ end; //
 drop procedure if exists update_relocation_date//
 create procedure update_relocation_date(in room_id int(11), in new_relocation_date date)
 begin
-	IF now() - new_relocation_date > 0 THEN
-	update renting set End_date = new_relcation_date
-	where room_ID = room_id;
-end IF;
+	IF now() < new_relocation_date THEN
+		update renting set end_date = new_relocation_date
+		where renting.room_ID = room_id;
+	end IF;
 end;//
 /**
 ** Delete a studen from renting
