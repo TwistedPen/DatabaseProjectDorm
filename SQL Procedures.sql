@@ -31,5 +31,15 @@ begin
     where signed_up.CPR_no = CPR;
 end; //
 
+/**
+** Delete a studen from renting
+**/
+create procedure moving_out(in CPR INT(10), room_id INT)
+begin
+    # Delete from signed_up
+    delete from renting
+    where signed_up.CPR_no = CPR;
+end; //
+
 delimiter ;
 
