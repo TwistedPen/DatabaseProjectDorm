@@ -2,6 +2,8 @@
 ** Functions
 */
 delimiter //
+
+DROP FUNCTION IF EXISTS `noOfRenters`; //
 CREATE FUNCTION `noOfRenters`(dormName varchar(45)) RETURNS int(11)
 BEGIN
 	declare r_count integer;
@@ -10,6 +12,7 @@ BEGIN
 	RETURN r_count;
 END;//
 
+DROP FUNCTION IF EXISTS `rentersAtUni`; //
 CREATE FUNCTION `rentersAtUni`(uni varchar(45)) RETURNS int(11)
 BEGIN
 	declare uni_count integer;
@@ -18,8 +21,8 @@ BEGIN
 	RETURN uni_count;
 END;//
 
- #drop function if exists getAddress;
- CREATE FUNCTION `getAddress`(roomID int(6)) RETURNS varchar(45)
+DROP FUNCTION IF EXISTS `getAddress`; //
+CREATE FUNCTION `getAddress`(roomID int(6)) RETURNS varchar(45)
 BEGIN
 	declare roomNo varchar(45);
 	select Street_no 
@@ -28,6 +31,7 @@ BEGIN
 	RETURN concat(Street_name, Street_no, roomNo, substr(Room_ID,4));
 END;//
 
+DROP FUNCTION IF EXISTS `getRoomRent`; //
 CREATE FUNCTION `getRoomRent`(roomID int(11)) RETURNS DECIMAL(8,2)
 BEGIN
 	declare rent DECIMAL;
@@ -37,6 +41,7 @@ BEGIN
 	RETURN rent;
 END;//
 
+DROP FUNCTION IF EXISTS `isAvailableRoom`; //
 CREATE FUNCTION `isAvailableRoom`(roomID int(11)) RETURNS BOOLEAN
 BEGIN
 	declare flag BOOLEAN;
