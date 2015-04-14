@@ -38,11 +38,12 @@ insert into room_rent values(12,2500,'Paul Bergsø Kollegiet');
 insert into room_rent values(24,4000,'Paul Bergsø Kollegiet');
 insert into room_rent values(18,2500,'Ostenfeld Kollegiet');
 insert into room_rent values(30,4000,'Ostenfeld Kollegiet');
-# ID, kitchen, name, size (Kampsax)
+# ID, kitchen, name, size 
+# Kampsax
 insert into room values(080001,000008,'801',12);
 insert into room values(080006,000008,'806',12);
 insert into room values(080009,000008,'809',12);
-insert into room values(080009,000008,'802',12);
+insert into room values(080002,000008,'802',12);
 # Ostenfeld
 insert into room values(010111,010002,'111',12);
 insert into room values(010211,010002,'220',12);
