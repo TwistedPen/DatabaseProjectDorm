@@ -92,7 +92,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `dorm`.`Student` ;
 
 CREATE TABLE IF NOT EXISTS `dorm`.`Student` (
-  `CPR_no` 		INT(10) NOT NULL,
+  `CPR_no` 		VARCHAR(10) NOT NULL,
   `First_name` 	VARCHAR(45) NOT NULL,
   `Last_name` 	VARCHAR(45) NOT NULL,
   `Phone_no` 	INT(10) NOT NULL,
