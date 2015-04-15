@@ -68,7 +68,7 @@ create procedure vacate(in CPR INT(10), room_id INT)
 begin
     # Delete from signed_up
     delete from renting
-    where signed_up.CPR_no = CPR;
+    where renting.CPR_no = CPR;
 end; //
 
 delimiter ;

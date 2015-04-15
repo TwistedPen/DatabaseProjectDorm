@@ -7,7 +7,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema dorm
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `dorm` ;
+#DROP SCHEMA IF EXISTS `dorm` ;
 
 -- -----------------------------------------------------
 -- Schema dorm
@@ -35,7 +35,6 @@ DROP TABLE IF EXISTS `dorm`.`Dorm` ;
 CREATE TABLE IF NOT EXISTS `dorm`.`Dorm` (
 
   `Dorm_name` VARCHAR(45) NOT NULL,
-
   `Street_name` VARCHAR(60) NOT NULL,
   `Street_no` VARCHAR(45) NOT NULL,
   `Post_no` INT(8) NOT NULL,
@@ -206,6 +205,61 @@ CREATE TABLE IF NOT EXISTS `dorm`.`Room_Rent` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `dorm`.`vacatelog`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `dorm`.`Vacatelog` ;
+
+create table if not exists `dorm`.`Vacatelog` (
+	`CPR_no` 			INT(10) NOT NULL,
+	`Dorm_name` 		VARCHAR(45) NOT NULL, 
+	`Kitchen_ID`		INT NOT NULL, 
+	`Room_ID` 			INT NOT NULL,
+    `Vacate_date`		DATE,
+    `Time_stamp`		TIMESTAMP,
+	primary key (`CPR_no`),
+    CONSTRAINT `fk_Vacatelog_Dorm1`
+		foreign key (Dorm_name) references Dorm (Dorm_name)
+			on delete no action
+            on update no action,
+	CONSTRAINT `fk_Vacatelog_Room1`
+		foreign key (Room_ID) references Room (Room_ID)
+			on delete no action
+            on update no action,
+	CONSTRAINT `fk_Vacatelog_Kitchen1`
+		foreign key (Kitchen_ID) references Kitchen (Kitchen_ID)
+			on delete no action
+            on update no action
+	)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `dorm`.`vacatelog`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `dorm`.`Movinginlog` ;
+
+create table if not exists `dorm`.`Movinginlog` (
+	`CPR_no` 			INT(10) NOT NULL,
+	`Dorm_name` 		VARCHAR(45) NOT NULL, 
+	`Kitchen_ID`		INT NOT NULL, 
+	`Room_ID` 			INT NOT NULL,
+    `Move_in_date`		DATE,
+    `Time_stamp`		TIMESTAMP,
+	primary key (`CPR_no`),
+    CONSTRAINT `fk_movinginlog_Dorm1`
+		foreign key (Dorm_name) references Dorm (Dorm_name)
+			on delete no action
+            on update no action,
+	CONSTRAINT `fk_Movinginlog_Room1`
+		foreign key (Room_ID) references Room (Room_ID)
+			on delete no action
+            on update no action,
+	CONSTRAINT `fk_Movinginlog_Kitchen1`
+		foreign key (Kitchen_ID) references Kitchen (Kitchen_ID)
+			on delete no action
+            on update no action
+	)
+ENGINE = InnoDB;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
