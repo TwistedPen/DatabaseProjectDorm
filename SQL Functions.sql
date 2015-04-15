@@ -24,11 +24,11 @@ END;//
 DROP FUNCTION IF EXISTS `getAddress`; //
 CREATE FUNCTION `getAddress`(roomID int(6)) RETURNS varchar(45)
 BEGIN
-	declare roomNo varchar(45);
-	select Street_no 
-	into roomNo from (room natural join kitchen) natural join dorm 
+	declare roomAddress varchar(45);
+	select concat(Street_name," ", Street_no,", ", room.Name)
+	into roomAddress from room natural join kitchen natural join dorm 
 	where Room_ID = roomID;
-	RETURN concat(Street_name, Street_no, roomNo, substr(Room_ID,4));
+	RETURN roomAddress;
 END;//
 
 DROP FUNCTION IF EXISTS `getRoomRent`; //
