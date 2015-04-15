@@ -28,7 +28,7 @@ begin
 end; //
 
 /*
-* makes sure that end date is not in the past
+* logs the student info along with the room info for when vacated from a room
 */ 
 DROP TRIGGER IF EXISTS vacatelog_insert;//
 create trigger vacatelog_insert
@@ -48,6 +48,9 @@ begin
 	insert into vacatelog values (OLD.CPR_no, d_name, k_ID, OLD.Room_id, OLD.end_date, NOW());
 end; //
 
+/*
+* logs the student info along with the room info for when moved in to a room
+*/ 
 DROP TRIGGER IF EXISTS movinginlog_insert;//
 create trigger movinginlog_insert
 after insert on renting for each row
