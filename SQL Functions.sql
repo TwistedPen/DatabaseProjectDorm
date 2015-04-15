@@ -7,8 +7,8 @@ DROP FUNCTION IF EXISTS `noOfRenters`; //
 CREATE FUNCTION `noOfRenters`(dormName varchar(45)) RETURNS int(11)
 BEGIN
 	declare r_count integer;
-	select count(*) into r_count from dorm
-	where dorm_name = dormName;
+	select count(CPR_no) into r_count from dorm natural join kitchen natural join room natural join renting
+	where Dorm_name = dormName;
 	RETURN r_count;
 END;//
 
@@ -16,7 +16,7 @@ DROP FUNCTION IF EXISTS `rentersAtUni`; //
 CREATE FUNCTION `rentersAtUni`(uni varchar(45)) RETURNS int(11)
 BEGIN
 	declare uni_count integer;
-	select count(*) into uni_count from signed_up join educational_institution
+	select count(CPR_no) into uni_count from student join educational_institution
 	where Edu_name = uni;
 	RETURN uni_count;
 END;//
