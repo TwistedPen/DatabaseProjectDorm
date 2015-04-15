@@ -21,8 +21,8 @@ USE `dorm` ;
 DROP TABLE IF EXISTS `dorm`.`City` ;
 
 CREATE TABLE IF NOT EXISTS `dorm`.`City` (
-  `Post_no` INT NOT NULL,
-  `City` VARCHAR(15) NOT NULL,
+  `Post_no` 	INT(8) NOT NULL,
+  `City` 		VARCHAR(15) NOT NULL,
   PRIMARY KEY (`Post_no`))
 ENGINE = InnoDB;
 
@@ -33,10 +33,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `dorm`.`Dorm` ;
 
 CREATE TABLE IF NOT EXISTS `dorm`.`Dorm` (
-  `Dorm_name` VARCHAR(45) NOT NULL,
+
+  `Dorm_name` 	VARCHAR(45) NOT NULL,
   `Street_name` VARCHAR(60) NOT NULL,
-  `Street_no` VARCHAR(45) NOT NULL,
-  `Post_no` INT NOT NULL,
+  `Street_no`	VARCHAR(45) NOT NULL,
+  `Post_no` 	INT(8) NOT NULL,
   PRIMARY KEY (`Dorm_name`),
   INDEX `fk_Dorm_City1_idx` (`Post_no` ASC),
   CONSTRAINT `fk_Dorm_City1`
@@ -53,8 +54,8 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `dorm`.`Kitchen` ;
 
 CREATE TABLE IF NOT EXISTS `dorm`.`Kitchen` (
-  `Kitchen_ID` VARCHAR(6) NOT NULL,
-  `Dorm_name` VARCHAR(45) NOT NULL,
+  `Kitchen_ID` 	VARCHAR(6) NOT NULL,
+  `Dorm_name` 	VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Kitchen_ID`),
   INDEX `fk_Kitchen_Dorm1_idx` (`Dorm_name` ASC),
   CONSTRAINT `fk_Kitchen_Dorm1`
@@ -71,10 +72,10 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `dorm`.`Educational_institution` ;
 
 CREATE TABLE IF NOT EXISTS `dorm`.`Educational_institution` (
-  `Edu_name` VARCHAR(45) NOT NULL,
+  `Edu_name` 	VARCHAR(45) NOT NULL,
   `Street_name` VARCHAR(60) NOT NULL,
-  `Street_no` VARCHAR(45) NOT NULL,
-  `Post_no` INT NOT NULL,
+  `Street_no`	VARCHAR(45) NOT NULL,
+  `Post_no` 	INT(8) NOT NULL,
   PRIMARY KEY (`Edu_name`),
   INDEX `fk_Educational_instituion_City1_idx` (`Post_no` ASC),
   CONSTRAINT `fk_Educational_instituion_City1`
@@ -91,11 +92,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `dorm`.`Student` ;
 
 CREATE TABLE IF NOT EXISTS `dorm`.`Student` (
-  `CPR_no` VARCHAR(10) NOT NULL,
-  `First_name` VARCHAR(45) NOT NULL,
-  `Last_name` VARCHAR(45) NOT NULL,
-  `Phone_no` INT NOT NULL,
-  `Edu_name` VARCHAR(45) NOT NULL,
+  `CPR_no` 		VARCHAR(10) NOT NULL,
+  `First_name` 	VARCHAR(45) NOT NULL,
+  `Last_name` 	VARCHAR(45) NOT NULL,
+  `Phone_no` 	INT(10) NOT NULL,
+  `Edu_name` 	VARCHAR(45) NOT NULL,
   PRIMARY KEY (`CPR_no`),
   INDEX `fk_Student_Educational_institution1_idx` (`Edu_name` ASC),
   CONSTRAINT `fk_Student_Educational_institution1`
@@ -112,10 +113,10 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `dorm`.`Room` ;
 
 CREATE TABLE IF NOT EXISTS `dorm`.`Room` (
-  `Room_ID` VARCHAR(6) NOT NULL,
-  `Kitchen_ID` VARCHAR(6) NOT NULL,
-  `Name` VARCHAR(45) NOT NULL,
-  `Room_size` DECIMAL(4,2) NOT NULL,
+  `Room_ID` 	VARCHAR(6) NOT NULL,
+  `Kitchen_ID` 	VARCHAR(6) NOT NULL,
+  `Name` 		VARCHAR(45) NOT NULL,
+  `Room_size` 	DECIMAL(4,2) NOT NULL,
   PRIMARY KEY (`Room_ID`),
   INDEX `fk_Room_Kitchen1_idx` (`Kitchen_ID` ASC),
   CONSTRAINT `fk_Room_Kitchen1`
@@ -127,51 +128,35 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `dorm`.`Signedup_Address`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `dorm`.`Signedup_Address` ;
-
-CREATE TABLE IF NOT EXISTS `dorm`.`Signedup_Address` (
-  `CPR_no` VARCHAR(10) NOT NULL,
-  `Street_name` VARCHAR(60) NOT NULL,
-  `Street_no` VARCHAR(45) NOT NULL,
-  `City_Post_no` INT NOT NULL,
-  PRIMARY KEY (`CPR_no`),
-  INDEX `fk_Current_Address_City1_idx` (`City_Post_no` ASC),
-  CONSTRAINT `fk_Current_Address_City1`
-    FOREIGN KEY (`City_Post_no`)
-    REFERENCES `dorm`.`City` (`Post_no`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `dorm`.`Signed_up`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `dorm`.`Signed_up` ;
 
 CREATE TABLE IF NOT EXISTS `dorm`.`Signed_up` (
-  `CPR_no` VARCHAR(10) NOT NULL,
-  `Dorm_name` VARCHAR(45) NOT NULL,
-  `Sign_up_date` DATE NOT NULL,
+  `CPR_no` 			VARCHAR(10) NOT NULL,
+  `Dorm_name` 		VARCHAR(45) NOT NULL,
+  `Sign_up_date` 	DATE NOT NULL,
   `Distance_to_edu` DECIMAL(6,2) NOT NULL,
+  `Street_name` 	VARCHAR(60) NOT NULL,
+  `Street_no` 		VARCHAR(45) NOT NULL,
+  `Post_no` 		INT(8) NOT NULL,
   PRIMARY KEY (`CPR_no`, `Dorm_name`),
   INDEX `fk_Signed_up_Student1_idx` (`CPR_no` ASC),
+  INDEX `fk_Signed_up_City1_idx` (`Post_no` ASC),
   INDEX `fk_Signed_up_Dorm1_idx` (`Dorm_name` ASC),
   CONSTRAINT `fk_Signed_up_Student1`
     FOREIGN KEY (`CPR_no`)
     REFERENCES `dorm`.`Student` (`CPR_no`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Signed_up_City1`
+    FOREIGN KEY (`Post_no`)
+    REFERENCES `dorm`.`City` (`Post_no`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
   CONSTRAINT `fk_Signed_up_Dorm1`
     FOREIGN KEY (`Dorm_name`)
     REFERENCES `dorm`.`Dorm` (`Dorm_name`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Signed_up_Current_Address1`
-    FOREIGN KEY (`CPR_no`)
-    REFERENCES `dorm`.`Signedup_Address` (`CPR_no`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -183,10 +168,10 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `dorm`.`Renting` ;
 
 CREATE TABLE IF NOT EXISTS `dorm`.`Renting` (
-  `Room_ID` VARCHAR(6) NOT NULL,
-  `Start_date` DATE NOT NULL,
-  `End_date` DATE NULL,
-  `CPR_no` VARCHAR(10) NOT NULL,
+  `Room_ID` 	VARCHAR(6) NOT NULL,
+  `Start_date` 	DATE NOT NULL,
+  `End_date` 	DATE NULL,
+  `CPR_no` 		VARCHAR(10) NOT NULL,
   PRIMARY KEY (`Room_ID`),
   INDEX `fk_Renting_Student1_idx` (`CPR_no` ASC),
   CONSTRAINT `fk_Renting_Room1`
@@ -208,8 +193,8 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `dorm`.`Room_Rent` ;
 
 CREATE TABLE IF NOT EXISTS `dorm`.`Room_Rent` (
-  `Room_size` DECIMAL(4,2) NOT NULL,
-  `Dorm_name` VARCHAR(45) NOT NULL,
+  `Room_size` 	DECIMAL(4,2) NOT NULL,
+  `Dorm_name` 	VARCHAR(45) NOT NULL,
   `Monthly_fee` DECIMAL(8,2) NOT NULL,
   PRIMARY KEY (`Room_size`, `Dorm_name`),
   INDEX `fk_Room_Rent_Dorm1_idx` (`Dorm_name` ASC),
@@ -275,7 +260,6 @@ create table if not exists `dorm`.`Movinginlog` (
             on update no action
 	)
 ENGINE = InnoDB;
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
