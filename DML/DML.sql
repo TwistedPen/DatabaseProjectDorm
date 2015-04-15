@@ -86,19 +86,19 @@ insert into student values('0904123444','Sarah','Andersen',28559031,'Danmarks Te
 # Room ID, Start date, End date, Student CPR
 # Kampsax
 insert into renting values('080001',180208,160511,'2012902131');
-insert into renting values('080009',100110,160511,'2702923614');
+insert into renting values('080009',100110,160518,'2702923614');
 insert into renting values('080011',281208,200512,'2410703342');
-insert into renting values('080013',211208,200511,'0201222211');
-insert into renting values('080006',211208,200511,'0303103437');
+insert into renting values('080013',211208,200517,'0201222211');
+insert into renting values('080006',211208,200515,'0303103437');
 # Ostenfeld
-insert into renting values('010111',120404,160303,'2008882332');
+insert into renting values('010111',120404,160305,'2008882332');
 insert into renting values('010333',180208,160511,'1992050984');
-insert into renting values('010444',020212,160508,'1206120042');
-insert into renting values('010211',150111,131211,'0904123444');
+insert into renting values('010444',020212,160516,'1206120042');
+insert into renting values('010211',150111,131217,'0904123444');
 # Bergsøe
 insert into renting values('020050',130208,160516,'1402334888');
-insert into renting values('020001',281208,200512,'1530050917');
-insert into renting values('030044',281208,200512,'2510803339');
+insert into renting values('020001',281208,200515,'1530050917');
+insert into renting values('030044',281208,200516,'2510803339');
 # Student CPR, dorm, start date, street name, no, post code
 insert into signed_up values('1212120015','Kampsax Kollegiet',020312,1.00,'Kollegiebakken','9',2800);
 insert into signed_up values('0402314664','Kampsax Kollegiet',030313,10.00,'Kollegiebakken','9',2800);
