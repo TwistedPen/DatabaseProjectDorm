@@ -133,7 +133,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `dorm`.`Signed_up` ;
 
 CREATE TABLE IF NOT EXISTS `dorm`.`Signed_up` (
-  `CPR_no` INT(10) NOT NULL,
+  `CPR_no` VARCHAR(10) NOT NULL,
   `Dorm_name` VARCHAR(45) NOT NULL,
   `Sign_up_date` DATE NOT NULL,
   `Distance_to_edu` DECIMAL(6,2) NOT NULL,
@@ -171,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `dorm`.`Renting` (
   `Room_ID` INT NOT NULL,
   `Start_date` DATE NOT NULL,
   `End_date` DATE NULL,
-  `CPR_no` INT(10) NOT NULL,
+  `CPR_no` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`Room_ID`),
   INDEX `fk_Renting_Student1_idx` (`CPR_no` ASC),
   CONSTRAINT `fk_Renting_Room1`
@@ -211,7 +211,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `dorm`.`Vacatelog` ;
 
 create table if not exists `dorm`.`Vacatelog` (
-	`CPR_no` 			INT(10) NOT NULL,
+	`CPR_no` 			VARCHAR(10) NOT NULL,
 	`Dorm_name` 		VARCHAR(45) NOT NULL, 
 	`Kitchen_ID`		INT NOT NULL, 
 	`Room_ID` 			INT NOT NULL,
@@ -239,7 +239,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `dorm`.`Movinginlog` ;
 
 create table if not exists `dorm`.`Movinginlog` (
-	`CPR_no` 			INT(10) NOT NULL,
+	`CPR_no` 			VARCHAR(10) NOT NULL,
 	`Dorm_name` 		VARCHAR(45) NOT NULL, 
 	`Kitchen_ID`		INT NOT NULL, 
 	`Room_ID` 			INT NOT NULL,
