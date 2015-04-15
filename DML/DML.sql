@@ -35,19 +35,19 @@ insert into kitchen values('020002','Paul Bergsøe Kollegiet');
 insert into kitchen values('020003','Paul Bergsøe Kollegiet');
 insert into kitchen values('020004','Paul Bergsøe Kollegiet');
 # Size, monthly fee, dorm
-insert into room_rent values(12,2500,'Kampsax Kollegiet');
-insert into room_rent values(12,2500,'Paul Bergsøe Kollegiet');
-insert into room_rent values(24,4000,'Paul Bergsøe Kollegiet');
-insert into room_rent values(18,2500,'Ostenfeld Kollegiet');
-insert into room_rent values(30,4000,'Ostenfeld Kollegiet');
+insert into room_rent values(12,'Kampsax Kollegiet',2500);
+insert into room_rent values(12,'Paul Bergsøe Kollegiet',2500);
+insert into room_rent values(24,'Paul Bergsøe Kollegiet',4000);
+insert into room_rent values(18,'Ostenfeld Kollegiet',2500);
+insert into room_rent values(30,'Ostenfeld Kollegiet',4000);
 # ID, kitchen, name, size 
 # Kampsax
 insert into room values('080001','000008','801',12);
 insert into room values('080006','000008','806',12);
 insert into room values('080009','000008','809',12);
-insert into room values('080011','000013','809',12);
-insert into room values('080012','000013','802',12);
-insert into room values('080013','000020','805',12);
+insert into room values('080011','000013','1309',12);
+insert into room values('080012','000013','1302',12);
+insert into room values('080013','000020','2005',12);
 # Ostenfeld
 insert into room values('010111','010002','111',18);
 insert into room values('010211','010002','220',30);

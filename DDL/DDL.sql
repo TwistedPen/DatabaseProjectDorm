@@ -194,8 +194,8 @@ DROP TABLE IF EXISTS `dorm`.`Room_Rent` ;
 
 CREATE TABLE IF NOT EXISTS `dorm`.`Room_Rent` (
   `Room_size` 	DECIMAL(4,2) NOT NULL,
-  `Monthly_fee` DECIMAL(8,2) NOT NULL,
   `Dorm_name` 	VARCHAR(45) NOT NULL,
+  `Monthly_fee` DECIMAL(8,2) NOT NULL,
   PRIMARY KEY (`Room_size`, `Dorm_name`),
   INDEX `fk_Room_Rent_Dorm1_idx` (`Dorm_name` ASC),
   CONSTRAINT `fk_Room_Rent_Dorm1`
