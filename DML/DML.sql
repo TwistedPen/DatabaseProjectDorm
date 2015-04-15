@@ -94,6 +94,7 @@ insert into renting values('080006',211208,200511,'0303103437');
 insert into renting values('010111',120404,160303,'2008882332');
 insert into renting values('010333',180208,160511,'1992050984');
 insert into renting values('010444',020212,160508,'1206120042');
+insert into renting values('010211',150111,131211,'0904123444');
 # Bergsøe
 insert into renting values('020050',130208,160516,'1402334888');
 insert into renting values('020001',281208,200512,'1530050917');
