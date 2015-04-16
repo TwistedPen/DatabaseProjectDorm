@@ -2,11 +2,11 @@
 ** SQL Queries
 **
 */
-
+	
 /*
 * a table of all the rooms with no renters
 */
-DROP VIEW IF EXISTS avaialbe_rooms;
+DROP VIEW IF EXISTS available_rooms;
 create view available_rooms as
 	select * from room where room_ID not in (select room_ID from renting);
 

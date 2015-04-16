@@ -61,10 +61,10 @@ begin
 end IF;
 end;//
 /**
-** Delete a studen from renting
+** Delete a student	 from renting
 **/
 drop procedure if exists vacate//
-create procedure vacate(in CPR INT(10), room_id INT)
+create procedure vacate(in CPR INT(10))
 begin
     # Delete from signed_up
     delete from renting

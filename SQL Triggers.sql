@@ -1,8 +1,6 @@
 /*
 ** SQL Triggers
 */
-
-
 delimiter //
 /*
 * makes sure that end date is not in the past
