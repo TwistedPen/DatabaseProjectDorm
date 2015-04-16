@@ -103,16 +103,7 @@ insert into renting values('010211',150111,131217,'0904123444');
 # Bergsøe
 insert into renting values('020050',130208,160516,'1402334888');
 insert into renting values('020001',281208,200515,'1530050917');
-insert into renting values('030044',281208,200516,'2510803339');
-# Student CPR, dorm, start date, street name, no, post code
-insert into signed_up values('1212120015','Kampsax Kollegiet',020312,40.00);
-insert into signed_up values('0402314664','Kampsax Kollegiet',030313,20.00);
-insert into signed_up values('2365900001','Kampsax Kollegiet',030313,7.00);
-insert into signed_up values('2702923614','Ostenfeld Kollegiet',040415,5.00);
-insert into signed_up values('1104902333','Ostenfeld Kollegiet',020310,8.50);
-insert into signed_up values('2410703339','Ostenfeld Kollegiet',020310,16.50);
-insert into signed_up values('2702355315','Paul Bergsøe Kollegiet',150412,6.00);
-insert into signed_up values('0302334566','Paul Bergsøe Kollegiet',150412,13.00);
+insert into renting values('030044',281208,200516,'2510803335');
 # Student CPR, street name, street no, post code
 insert into signedup_address values('1212120015','Spolestrædet','48',2635);
 insert into signedup_address values('0402314664','Frederikssundsvej','228',1165);
@@ -122,3 +113,13 @@ insert into signedup_address values('1104902333','Hyldestykket','5',2970);
 insert into signedup_address values('2410703339','Engelsborgvej','8',2800);
 insert into signedup_address values('2702355315','Toftebjergvej','25',29700);
 insert into signedup_address values('0302334566','Vandtårnsvej','10',3460);
+
+# Student CPR, dorm, start date, street name, no, post code
+insert into signed_up values('1212120015','Kampsax Kollegiet',020312,40.00);
+insert into signed_up values('0402314664','Kampsax Kollegiet',030313,20.00);
+insert into signed_up values('2365900001','Kampsax Kollegiet',030313,7.00);
+insert into signed_up values('2702923614','Ostenfeld Kollegiet',040415,5.00);
+insert into signed_up values('1104902333','Ostenfeld Kollegiet',020310,8.50);
+insert into signed_up values('2410703339','Ostenfeld Kollegiet',020310,16.50);
+insert into signed_up values('2702355315','Paul Bergsøe Kollegiet',150412,6.00);
+insert into signed_up values('0302334566','Paul Bergsøe Kollegiet',150412,13.00);
