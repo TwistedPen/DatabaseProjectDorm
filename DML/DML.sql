@@ -111,7 +111,7 @@ insert into signedup_address values('2365900001','Skodsborgvej','9',2830);
 insert into signedup_address values('2702923614','Nybrovej','304',2800);
 insert into signedup_address values('1104902333','Hyldestykket','5',2970);
 insert into signedup_address values('2410703339','Engelsborgvej','8',2800);
-insert into signedup_address values('2702355315','Toftebjergvej','25',29700);
+insert into signedup_address values('2702355315','Toftebjergvej','25',2970);
 insert into signedup_address values('0302334566','Vandtårnsvej','10',3460);
 
 # Student CPR, dorm, start date, street name, no, post code
